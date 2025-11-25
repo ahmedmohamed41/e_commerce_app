@@ -5,7 +5,11 @@ const String svgPath = "assets/svg_images";
 
 abstract class ImageAssets {
   static const String routeLogo = "$imagePath/splash_logo.png";
+  static const String ecommerceLogo = "$imagePath/ecommerce_logo.png";
   static const String categoryCardImage = "$imagePath/category_card_image.png";
+  static const String splashAndroidImage = "$imagePath/splash_android_12.png";
+  static const String splashBackgroundImage =
+      "$imagePath/splash_background.png";
 
   static const String subcategoryCardImage =
       "$imagePath/sub_category_card_image.png";
@@ -25,10 +29,11 @@ abstract class ImageAssets {
   static const String searchIcon = "$imagePath/search.png";
 }
 
-class SvgAssets{
-  static const String routeLogo = "$svgPath/route.svg";
-  static const String eye = "$svgPath/Eye.svg";
-  static const String edit = "$svgPath/edit (1) 5.svg";
+class SvgAssets {
+  static const String routeLogoSvg = "$svgPath/route.svg";
+  static const String ecommerceLogoSvg = "$svgPath/ecommerce_logo.svg";
+  static const String eyeSvg = "$svgPath/Eye.svg";
+  static const String editSvg = "$svgPath/edit (1) 5.svg";
 }
 
 abstract class IconsAssets {
@@ -51,8 +56,6 @@ abstract class IconsAssets {
   static String get icHeart => _icHeart;
   static String get icClickedHeart => _icClickedHeart;
 }
-
-
 
 class JsonAssets {
   static const String loading = "$jsonPath/loading.json";

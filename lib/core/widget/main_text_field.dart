@@ -140,7 +140,7 @@ class _BuildTextFieldState extends State<BuildTextField> {
                       isSelected: !hidden,
                       color: widget.cursorColor,
                       selectedIcon: const Icon(Icons.remove_red_eye_rounded),
-                      icon: SvgPicture.asset(SvgAssets.eye),
+                      icon: SvgPicture.asset(SvgAssets.eyeSvg),
                     )
                   : widget.suffixIcon,
               hintStyle:

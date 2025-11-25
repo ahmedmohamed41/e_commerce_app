@@ -1,11 +1,13 @@
 import 'dart:developer';
-
+import 'package:ecommerce_app/core/UI/ui_utils.dart';
 import 'package:ecommerce_app/core/resources/font_manager.dart';
 import 'package:ecommerce_app/core/routes_manager/routes.dart';
 import 'package:ecommerce_app/core/widget/custom_elevated_button.dart';
+import 'package:ecommerce_app/features/auth/cubit/auth_cubit.dart';
+import 'package:ecommerce_app/features/auth/data/models/register_request.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import '../../../../core/resources/assets_manager.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/styles_manager.dart';
@@ -64,7 +66,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: AppSize.s40.h),
-                  Center(child: SvgPicture.asset(SvgAssets.routeLogo)),
+                  Center(
+                    child: Image.asset(
+                      ImageAssets.ecommerceLogo,
+                      width: 237.w,
+                      height: 90.h,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
                   SizedBox(height: AppSize.s40.h),
                   BuildTextField(
                     controller: _nameController,
@@ -103,23 +112,58 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     textInputType: TextInputType.text,
                   ),
                   SizedBox(height: AppSize.s50.h),
-                  Center(
-                    child: SizedBox(
-                      height: AppSize.s60.h,
-                      width: MediaQuery.of(context).size.width * .9,
-                      child: CustomElevatedButton(
-                        // borderRadius: AppSize.s8,
-                        label: 'Sign Up',
-                        backgroundColor: ColorManager.white,
-                        textStyle: getBoldStyle(
-                          color: ColorManager.primary,
-                          fontSize: AppSize.s20,
+                  BlocListener<AuthCubit, AuthState>(
+                    listener: (context, state) {
+                      if (state is RegisterLoading) {
+                        UiUtils.showLoading(context);
+                      }
+                      if (state is RegisterError) {
+                        UiUtils.hideLoading(context);
+                        UiUtils.showFluttertoast(
+                          state.message,
+                          ColorManager.error,
+                        );
+                      }
+                      if (state is RegisterSuccess) {
+                        UiUtils.hideLoading(context);
+                        UiUtils.showFluttertoast(
+                          'Sign Up Successfully',
+                          ColorManager.success,
+                        );
+                        Navigator.pushReplacementNamed(
+                          context,
+                          Routes.signInRoute,
+                        );
+                      }
+                    },
+                    child: Center(
+                      child: SizedBox(
+                        height: AppSize.s60.h,
+                        width: MediaQuery.of(context).size.width * .9,
+                        child: CustomElevatedButton(
+                          // borderRadius: AppSize.s8,
+                          label: 'Sign Up',
+                          backgroundColor: ColorManager.white,
+                          textStyle: getBoldStyle(
+                            color: ColorManager.primary,
+                            fontSize: AppSize.s20,
+                          ),
+                          onTap: () {
+                            if (_formKey.currentState!.validate() == false) {
+                              return;
+                            }
+                            BlocProvider.of<AuthCubit>(context).register(
+                              RegisterRequest(
+                                email: _emailController.text,
+                                name: _nameController.text,
+                                password: _passwordController.text,
+                                rePassword: _passwordController.text,
+                                phone: _phoneController.text,
+                              ),
+                            );
+                            log('Sign Up Successfully');
+                          },
                         ),
-                        onTap: () {
-                          if (_formKey.currentState!.validate() == false)
-                            return;
-                          log('Sign In Successfully');
-                        },
                       ),
                     ),
                   ),

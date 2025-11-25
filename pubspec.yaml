@@ -2,7 +2,7 @@ name: ecommerce_app
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -37,13 +37,10 @@ dependencies:
   auto_size_text:
   colornames:
   flutter_svg:
-  flutter_native_splash:
-
   readmore:
   smooth_page_indicator:
-  dio: ^5.8.0+1
+  dio: ^5.9.0
   shared_preferences: ^2.5.3
-  flutter_bloc: ^9.1.1
   dartz: ^0.10.1
   injectable:
   # add get_it
@@ -52,10 +49,28 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  fluttertoast: ^9.0.0
+  bloc: ^9.1.0
+  flutter_bloc: ^9.1.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+    # add the generator to your dev_dependencies
+  injectable_generator:
+  build_runner:
+
+  #
+  #flutter_native_splash:
+  #  color: "#ffffff"
+  #  image: assets/images/splash_background.png
+  #  android: true
+  #  ios: true
+  #  web: true
+  #  android_12: true  # إذا كنت تريد دعم Android 12
+  #
+  #  fill: true
+  #  web_image_mode: contain
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -69,7 +84,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
