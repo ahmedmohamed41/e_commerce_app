@@ -54,7 +54,7 @@ class CustomProductWidget extends StatelessWidget {
         height: height * 0.3,
         decoration: BoxDecoration(
           border: Border.all(
-            color: ColorManager.primary.withOpacity(0.3),
+            color: ColorManager.primary.withValues(alpha: 0.3),
             width: 2,
           ),
           borderRadius: BorderRadius.circular(16.r),
@@ -83,18 +83,16 @@ class CustomProductWidget extends StatelessWidget {
                   //   fit: BoxFit.cover,
                   // ),
                   ClipRRect(
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(14.r)),
-                    child: Image.asset(
-                      image,
-                      fit: BoxFit.cover,
-                      width: width,
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(14.r),
                     ),
+                    child: Image.asset(image, fit: BoxFit.cover, width: width),
                   ),
                   Positioned(
-                      top: height * 0.01,
-                      right: width * 0.02,
-                      child: HeartButton(onTap: () {})),
+                    top: height * 0.01,
+                    right: width * 0.02,
+                    child: HeartButton(onTap: () {}),
+                  ),
                 ],
               ),
             ),
@@ -175,15 +173,12 @@ class CustomProductWidget extends StatelessWidget {
                                 shape: BoxShape.circle,
                                 color: ColorManager.primary,
                               ),
-                              child: const Icon(
-                                Icons.add,
-                                color: Colors.white,
-                              ),
+                              child: const Icon(Icons.add, color: Colors.white),
                             ),
                           ),
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),

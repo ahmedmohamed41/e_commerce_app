@@ -23,9 +23,7 @@ class CartScreen extends StatelessWidget {
           IconButton(
             onPressed: () {},
             icon: ImageIcon(
-              AssetImage(
-                IconsAssets.icSearch,
-              ),
+              AssetImage(IconsAssets.icSearch),
               color: ColorManager.primary,
             ),
           ),

@@ -22,7 +22,9 @@ class FavouriteItemDetails extends StatelessWidget {
         CustomTextWgt(
           data: product["title"],
           textStyle: getSemiBoldStyle(
-              color: ColorManager.primaryDark, fontSize: AppSize.s18.sp),
+            color: ColorManager.primaryDark,
+            fontSize: AppSize.s18.sp,
+          ),
         ),
         Row(
           children: [
@@ -31,12 +33,16 @@ class FavouriteItemDetails extends StatelessWidget {
               width: AppSize.s14.w,
               height: AppSize.s14.h,
               decoration: BoxDecoration(
-                  color: product["color"], shape: BoxShape.circle),
+                color: product["color"],
+                shape: BoxShape.circle,
+              ),
             ),
             CustomTextWgt(
               data: (product["color"] as Color).colorName,
               textStyle: getMediumStyle(
-                  color: ColorManager.primaryDark, fontSize: AppSize.s14.sp),
+                color: ColorManager.primaryDark,
+                fontSize: AppSize.s14.sp,
+              ),
             ),
           ],
         ),
@@ -45,10 +51,9 @@ class FavouriteItemDetails extends StatelessWidget {
             CustomTextWgt(
               data: 'EGP ${product["finalPrice"]}  ',
               textStyle: getSemiBoldStyle(
-                      color: ColorManager.primaryDark, fontSize: AppSize.s18.sp)
-                  .copyWith(
-                letterSpacing: 0.17,
-              ),
+                color: ColorManager.primaryDark,
+                fontSize: AppSize.s18.sp,
+              ).copyWith(letterSpacing: 0.17),
             ),
             product["salePrice"] == null
                 ? const SizedBox.shrink()
@@ -56,20 +61,23 @@ class FavouriteItemDetails extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        SizedBox(
-                          height: AppSize.s10.h,
-                        ),
+                        SizedBox(height: AppSize.s10.h),
                         CustomTextWgt(
-                            data: 'EGP ${product["salePrice"]}',
-                            textStyle: getMediumStyle(
-                                    color: ColorManager.appBarTitleColor
-                                        .withOpacity(.6))
-                                .copyWith(
-                                    letterSpacing: 0.17,
-                                    decoration: TextDecoration.lineThrough,
-                                    color: ColorManager.appBarTitleColor
-                                        .withOpacity(.6),
-                                    fontSize: AppSize.s10.sp)),
+                          data: 'EGP ${product["salePrice"]}',
+                          textStyle:
+                              getMediumStyle(
+                                color: ColorManager.appBarTitleColor.withValues(
+                                  alpha: 0.6,
+                                ),
+                              ).copyWith(
+                                letterSpacing: 0.17,
+                                decoration: TextDecoration.lineThrough,
+                                color: ColorManager.appBarTitleColor.withValues(
+                                  alpha: 0.6,
+                                ),
+                                fontSize: AppSize.s10.sp,
+                              ),
+                        ),
                       ],
                     ),
                   ),

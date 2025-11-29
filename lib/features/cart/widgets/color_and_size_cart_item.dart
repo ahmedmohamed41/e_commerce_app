@@ -18,15 +18,12 @@ class ColorAndSizeCartItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CircleAvatar(
-          radius: 7.5.r,
-          backgroundColor: color,
-        ),
+        CircleAvatar(radius: 7.5.r, backgroundColor: color),
         SizedBox(width: 5.w),
         Text(
           colorName,
           style: getRegularStyle(
-            color: ColorManager.textColor.withOpacity(0.5),
+            color: ColorManager.textColor.withValues(alpha: 0.5),
             fontSize: AppSize.s14.sp,
           ),
         ),
@@ -43,8 +40,9 @@ class ColorAndSizeCartItem extends StatelessWidget {
         Text(
           'Size: $size',
           style: getRegularStyle(
-              color: ColorManager.textColor.withOpacity(0.5),
-              fontSize: AppSize.s14.sp),
+            color: ColorManager.textColor.withValues(alpha: 0.5),
+            fontSize: AppSize.s14.sp,
+          ),
         ),
       ],
     );

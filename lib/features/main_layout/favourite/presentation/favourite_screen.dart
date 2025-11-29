@@ -10,17 +10,19 @@ class FavouriteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: AppSize.s14.w, vertical: AppSize.s10.h),
-        child: ListView.builder(
-          itemCount: AppConstants.favoriteProducts.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: EdgeInsets.symmetric(vertical: AppSize.s12.h),
-              child:
-                  FavoriteItem(product: AppConstants.favoriteProducts[index]),
-            );
-          },
-        ));
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSize.s14.w,
+        vertical: AppSize.s10.h,
+      ),
+      child: ListView.builder(
+        itemCount: AppConstants.favoriteProducts.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: EdgeInsets.symmetric(vertical: AppSize.s12.h),
+            child: FavoriteItem(product: AppConstants.favoriteProducts[index]),
+          );
+        },
+      ),
+    );
   }
 }

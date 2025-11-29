@@ -11,8 +11,13 @@ class CategoryItem extends StatelessWidget {
   final bool isSelected;
   final Function onItemClick;
 
-  const CategoryItem(this.index, this.title, this.isSelected, this.onItemClick,
-      {super.key});
+  const CategoryItem(
+    this.index,
+    this.title,
+    this.isSelected,
+    this.onItemClick, {
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,7 @@ class CategoryItem extends StatelessWidget {
       onTap: () => onItemClick(index),
       child: Container(
         // Set background color based on selection
-        color: isSelected?ColorManager.white:Colors.transparent,
+        color: isSelected ? ColorManager.white : Colors.transparent,
         padding: const EdgeInsets.all(AppPadding.p8),
         child: Row(
           children: [
@@ -39,16 +44,21 @@ class CategoryItem extends StatelessWidget {
             ),
             // wrap the text with expanded to avoid overflow error
             Expanded(
-                child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  vertical: AppPadding.p16, horizontal: AppPadding.p8),
-              child: Text(
-                title,
-                textAlign: TextAlign.start,
-                style: getMediumStyle(
-                    color: ColorManager.primary, fontSize: FontSize.s14),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: AppPadding.p16,
+                  horizontal: AppPadding.p8,
+                ),
+                child: Text(
+                  title,
+                  textAlign: TextAlign.start,
+                  style: getMediumStyle(
+                    color: ColorManager.primary,
+                    fontSize: FontSize.s14,
+                  ),
+                ),
               ),
-            ))
+            ),
           ],
         ),
       ),

@@ -7,6 +7,7 @@ import 'package:ecommerce_app/features/auth/data/models/login_response.dart';
 import 'package:ecommerce_app/features/auth/data/models/register_request.dart';
 import 'package:ecommerce_app/features/auth/data/models/register_response.dart';
 import 'package:injectable/injectable.dart';
+
 @Singleton(as: AuthRemoteDataSources)
 class AuthApiRemoteDataSource implements AuthRemoteDataSources {
   final Dio dio = Dio(BaseOptions(baseUrl: ApiConstant.baseURL));

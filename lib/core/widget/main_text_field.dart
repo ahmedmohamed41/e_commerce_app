@@ -83,7 +83,7 @@ class _BuildTextFieldState extends State<BuildTextField> {
           decoration: BoxDecoration(
             color:
                 widget.backgroundColor ??
-                ColorManager.darkGrey.withOpacity(.15),
+                ColorManager.darkGrey.withValues(alpha: 0.15),
             borderRadius: BorderRadius.circular(AppSize.s8),
             border: Border.all(
               color: widget.borderBackgroundColor ?? ColorManager.transparent,

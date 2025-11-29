@@ -11,11 +11,7 @@ class UiUtils {
         canPop: false,
         child: CupertinoAlertDialog(
           content: Column(
-            children: [
-              Center(
-                child: CircularProgressIndicator(),
-              ),
-            ],
+            children: [Center(child: CircularProgressIndicator())],
           ),
         ),
       ),
@@ -26,10 +22,7 @@ class UiUtils {
     Navigator.pop(context);
   }
 
-  static void showFluttertoast(
-    String message,
-    Color bgColor,
-  ) {
+  static void showFluttertoast(String message, Color bgColor) {
     Fluttertoast.showToast(
       msg: message,
       toastLength: Toast.LENGTH_SHORT,

@@ -24,56 +24,64 @@ class CategoryCardItem extends StatelessWidget {
         child: Stack(
           children: [
             // Background image for the category
-            Image.asset(
-              image,
-              fit: BoxFit.cover,
-              width: double.infinity,
-            ),
+            Image.asset(image, fit: BoxFit.cover, width: double.infinity),
             // Overlay with category title and button
             Positioned.fill(
-                child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: AppPadding.p18, vertical: AppMargin.m8),
-              child: Row(
-                children: [
-                  Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppPadding.p18,
+                  vertical: AppMargin.m8,
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
                       child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      // Category title
-                      Text(
-                        title,
-                        style: getBoldStyle(
-                            color: ColorManager.textColor,
-                            fontSize: FontSize.s16.sp),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      // Shop Now button
-                      SizedBox(
-                        width: 110.w,
-                        height: 35.h,
-                        child: ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          // Category title
+                          Text(
+                            title,
+                            style: getBoldStyle(
+                              color: ColorManager.textColor,
+                              fontSize: FontSize.s16.sp,
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          // Shop Now button
+                          SizedBox(
+                            width: 110.w,
+                            height: 35.h,
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
                                 fixedSize: Size(120.w, 30.h),
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: 5.w, vertical: 0),
+                                  horizontal: 5.w,
+                                  vertical: 0,
+                                ),
                                 backgroundColor: ColorManager.primary,
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.r))),
-                            child: Text(
-                              "Shop Now",
-                              style: getRegularStyle(color: ColorManager.white),
-                            )),
-                      )
-                    ],
-                  )),
-                  const Spacer()
-                ],
+                                  borderRadius: BorderRadius.circular(10.r),
+                                ),
+                              ),
+                              child: Text(
+                                "Shop Now",
+                                style: getRegularStyle(
+                                  color: ColorManager.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Spacer(),
+                  ],
+                ),
               ),
-            ))
+            ),
           ],
         ),
       ),

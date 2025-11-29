@@ -14,11 +14,16 @@ class Assets {
   static const String iconsIcSearch = 'assets/icons/ic_search.png';
   static const String iconsIcWishList = 'assets/icons/ic_wish_list.png';
   static const String iconsSearch = 'assets/icons/search.png';
-  static const String imagesBrandsSectionImage = 'assets/images/brands_section_image.png';
-  static const String imagesCarouselSlider1 = 'assets/images/CarouselSlider1.png';
-  static const String imagesCarouselSlider2 = 'assets/images/CarouselSlider2.png';
-  static const String imagesCarouselSlider3 = 'assets/images/CarouselSlider3.png';
-  static const String imagesCategoryCardImage = 'assets/images/category_card_image.png';
+  static const String imagesBrandsSectionImage =
+      'assets/images/brands_section_image.png';
+  static const String imagesCarouselSlider1 =
+      'assets/images/CarouselSlider1.png';
+  static const String imagesCarouselSlider2 =
+      'assets/images/CarouselSlider2.png';
+  static const String imagesCarouselSlider3 =
+      'assets/images/CarouselSlider3.png';
+  static const String imagesCategoryCardImage =
+      'assets/images/category_card_image.png';
   static const String imagesCategoryImage = 'assets/images/category_image.jpg';
   static const String imagesEcommerceLogo = 'assets/images/ecommerce_logo.png';
   static const String imagesFavorite = 'assets/images/favorite.png';
@@ -30,12 +35,15 @@ class Assets {
   static const String imagesRoute = 'assets/images/route.png';
   static const String imagesSearch = 'assets/images/search.png';
   static const String imagesShoppingCart = 'assets/images/shopping_cart.png';
-  static const String imagesSplashAndroid12 = 'assets/images/splash_android_12.png';
-  static const String imagesSplashBackground = 'assets/images/splash_background.png';
-  static const String imagesSubCategoryCardImage = 'assets/images/sub_category_card_image.png';
-  static const String svgImagesEcommerceLogo = 'assets/svg_images/ecommerce_logo.svg';
+  static const String imagesSplashAndroid12 =
+      'assets/images/splash_android_12.png';
+  static const String imagesSplashBackground =
+      'assets/images/splash_background.png';
+  static const String imagesSubCategoryCardImage =
+      'assets/images/sub_category_card_image.png';
+  static const String svgImagesEcommerceLogo =
+      'assets/svg_images/ecommerce_logo.svg';
   static const String svgImagesEye = 'assets/svg_images/Eye.svg';
   static const String svgImagesRoute = 'assets/svg_images/route.svg';
   static const String svgImagesSplashLogo = 'assets/svg_images/splash_logo.svg';
-
 }

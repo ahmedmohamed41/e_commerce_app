@@ -3,6 +3,7 @@ import 'package:ecommerce_app/core/resources/constants_manager.dart';
 import 'package:ecommerce_app/features/auth/data/data_sources/local/auth_local_data_source.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 @Singleton(as: AuthLocalDataSource)
 class AuthSharedPrefsLocalDataSource implements AuthLocalDataSource {
   @override

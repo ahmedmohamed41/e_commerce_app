@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ProductSize extends StatefulWidget {
   final List<int> size;
   final void Function() onSelected;
-  const ProductSize({super.key , required this.size , required this.onSelected});
+  const ProductSize({super.key, required this.size, required this.onSelected});
 
   @override
   State<ProductSize> createState() => _ProductSizeState();
@@ -20,18 +20,20 @@ class _ProductSizeState extends State<ProductSize> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Size',
-            style: getMediumStyle(color: ColorManager.appBarTitleColor)
-                .copyWith(fontSize: 18.sp)
+        Text(
+          'Size',
+          style: getMediumStyle(
+            color: ColorManager.appBarTitleColor,
+          ).copyWith(fontSize: 18.sp),
         ),
-        SizedBox(height: 8.h,),
+        SizedBox(height: 8.h),
         SizedBox(
           height: 45.h,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
-              itemBuilder: (context , index){
+            itemBuilder: (context, index) {
               return GestureDetector(
-                onTap: (){
+                onTap: () {
                   setState(() {
                     selected = index;
                   });
@@ -39,12 +41,14 @@ class _ProductSizeState extends State<ProductSize> {
                 },
                 child: SizeWidget(
                   index: index,
-                    selectedIndex: selected,
-                    sizeNumber: widget.size[index]),
+                  selectedIndex: selected,
+                  sizeNumber: widget.size[index],
+                ),
               );
-              },
-              separatorBuilder: (context , index)=>SizedBox(width: 17.w,),
-              itemCount: widget.size.length),
+            },
+            separatorBuilder: (context, index) => SizedBox(width: 17.w),
+            itemCount: widget.size.length,
+          ),
         ),
       ],
     );

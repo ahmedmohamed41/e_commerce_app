@@ -45,7 +45,7 @@ class ProductCard extends StatelessWidget {
           color: Colors.white,
           border: Border.all(
             width: 1,
-            color: ColorManager.primary.withOpacity(0.8),
+            color: ColorManager.primary.withValues(alpha: 0.8),
           ),
         ),
         child: Column(
@@ -70,7 +70,6 @@ class ProductCard extends StatelessWidget {
             //     ),
             //   ),
             // ),
-
             Expanded(
               flex: 1,
               child: Stack(
@@ -85,10 +84,7 @@ class ProductCard extends StatelessWidget {
                       ),
                       child: AspectRatio(
                         aspectRatio: 16 / 9,
-                        child: Image.asset(
-                          image,
-                          fit: BoxFit.cover,
-                        ),
+                        child: Image.asset(image, fit: BoxFit.cover),
                       ),
                     ),
                   ),
@@ -103,7 +99,7 @@ class ProductCard extends StatelessWidget {
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
+                            color: Colors.black.withValues(alpha: 0.2),
                             spreadRadius: 2,
                             blurRadius: 4,
                             offset: const Offset(0, 2),

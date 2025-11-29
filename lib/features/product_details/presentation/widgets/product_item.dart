@@ -20,9 +20,7 @@ class ProductItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(15.r),
         ),
         alignment: Alignment.topRight,
-        child: HeartButton(
-          onTap: onTap,
-        ),
+        child: HeartButton(onTap: onTap),
       ),
     );
   }

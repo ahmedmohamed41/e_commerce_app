@@ -5,32 +5,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomCategoryWidget extends StatelessWidget {
-  const CustomCategoryWidget({super.key, });
-   
+  const CustomCategoryWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-
-
         ClipRRect(
           borderRadius: BorderRadius.circular(100.r),
           child: Container(
             height: 100.h,
             width: 100.w,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-            ),
-            child:      CachedNetworkImage(
+            decoration: const BoxDecoration(shape: BoxShape.circle),
+            child: CachedNetworkImage(
               height: 100,
               width: 100,
               fit: BoxFit.cover,
-              imageUrl:'',
+              imageUrl: '',
               placeholder: (context, url) =>
-              const Center(child: CircularProgressIndicator()),
+                  const Center(child: CircularProgressIndicator()),
               errorWidget: (context, url, error) =>
-              const Center(child: Icon(Icons.error)),
+                  const Center(child: Icon(Icons.error)),
               imageBuilder: (context, imageProvider) {
                 return Container(
                   decoration: BoxDecoration(
@@ -47,7 +42,7 @@ class CustomCategoryWidget extends StatelessWidget {
         ),
         SizedBox(height: 8.h),
         Text(
-         ' category.name',
+          ' category.name',
           style: getRegularStyle(color: ColorManager.darkBlue, fontSize: 14.sp),
         ),
       ],

@@ -6,8 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TotalPriceAndCheckoutBotton extends StatelessWidget {
-  const TotalPriceAndCheckoutBotton(
-      {super.key, required this.totalPrice, required this.checkoutButtonOnTap});
+  const TotalPriceAndCheckoutBotton({
+    super.key,
+    required this.totalPrice,
+    required this.checkoutButtonOnTap,
+  });
   final int totalPrice;
   final void Function() checkoutButtonOnTap;
   @override
@@ -23,7 +26,7 @@ class TotalPriceAndCheckoutBotton extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: getMediumStyle(
-                color: ColorManager.textColor.withOpacity(0.6),
+                color: ColorManager.textColor.withValues(alpha: 0.6),
                 fontSize: AppSize.s18.sp,
               ),
             ),
@@ -49,12 +52,9 @@ class TotalPriceAndCheckoutBotton extends StatelessWidget {
           child: CustomElevatedButton(
             label: 'Check Out',
             onTap: checkoutButtonOnTap,
-            suffixIcon: Icon(
-              Icons.arrow_forward,
-              color: ColorManager.white,
-            ),
+            suffixIcon: Icon(Icons.arrow_forward, color: ColorManager.white),
           ),
-        )
+        ),
       ],
     );
   }

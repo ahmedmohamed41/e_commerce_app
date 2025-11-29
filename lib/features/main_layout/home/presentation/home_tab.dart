@@ -25,12 +25,10 @@ class _HomeTabState extends State<HomeTab> {
     ImageAssets.carouselSlider3,
   ];
 
-
   @override
   void initState() {
     super.initState();
     _startImageSwitching();
-   
   }
 
   void _startImageSwitching() {
@@ -50,17 +48,17 @@ class _HomeTabState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(children: [
-        CustomAdsWidget(
-          adsImages: adsImages,
-          currentIndex: _currentIndex,
-          timer: _timer,
-        ),
-        Column(
-          children: [
-            CustomSectionBar(sectionNname: 'Categories', function: () {}),
-            
-      
+      child: Column(
+        children: [
+          CustomAdsWidget(
+            adsImages: adsImages,
+            currentIndex: _currentIndex,
+            timer: _timer,
+          ),
+          Column(
+            children: [
+              CustomSectionBar(sectionNname: 'Categories', function: () {}),
+
               SizedBox(height: 12.h),
               CustomSectionBar(sectionNname: 'Brands', function: () {}),
               SizedBox(
@@ -100,9 +98,10 @@ class _HomeTabState extends State<HomeTab> {
                   ),
                 ),
               ),
-          ]
-      )] 
-      ));
-    
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }

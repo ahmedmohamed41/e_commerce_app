@@ -8,8 +8,8 @@ import 'package:ecommerce_app/core/routes_manager/routes.dart';
 import 'package:ecommerce_app/core/widget/custom_elevated_button.dart';
 import 'package:ecommerce_app/core/widget/main_text_field.dart';
 import 'package:ecommerce_app/core/widget/validators.dart';
-import 'package:ecommerce_app/features/auth/cubit/auth_cubit.dart';
 import 'package:ecommerce_app/features/auth/data/models/login_reguest.dart';
+import 'package:ecommerce_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -83,8 +83,8 @@ class _SignInScreenState extends State<SignInScreen> {
                   BuildTextField(
                     controller: _emailController,
                     backgroundColor: ColorManager.white,
-                    hint: 'enter your name',
-                    label: 'User name',
+                    hint: 'enter your email address',
+                    label: 'E-mail address',
                     textInputType: TextInputType.emailAddress,
                     validation: AppValidators.validateEmail,
                   ),
@@ -153,8 +153,9 @@ class _SignInScreenState extends State<SignInScreen> {
                             fontSize: AppSize.s18,
                           ),
                           onTap: () {
-                            if (_formKey.currentState!.validate() == false)
+                            if (_formKey.currentState!.validate() == false) {
                               return;
+                            }
                             BlocProvider.of<AuthCubit>(context).login(
                               LoginReguest(
                                 email: _emailController.text,

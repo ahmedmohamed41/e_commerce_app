@@ -1,11 +1,10 @@
-
-
 class AppValidators {
   AppValidators._();
 
   static String? validateEmail(String? val) {
     RegExp emailRegex = RegExp(
-        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+    );
     if (val == null) {
       return 'this field is required';
     } else if (val.trim().isEmpty) {
@@ -52,6 +51,7 @@ class AppValidators {
       return null;
     }
   }
+
   static String? validateFullName(String? val) {
     if (val == null || val.isEmpty) {
       return 'this field is required';
@@ -59,7 +59,6 @@ class AppValidators {
       return null;
     }
   }
-
 
   static String? validatePhoneNumber(String? val) {
     if (val == null) {
@@ -72,8 +71,4 @@ class AppValidators {
       return null;
     }
   }
-
-
-
-
 }
