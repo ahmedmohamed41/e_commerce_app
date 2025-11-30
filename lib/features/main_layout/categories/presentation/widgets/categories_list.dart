@@ -24,7 +24,7 @@ class _CategoriesListState extends State<CategoriesList> {
             // set the border for only 3 sides
             top: BorderSide(
               width: AppSize.s2,
-              color: ColorManager.primary..withValues(alpha: 0.3),
+              color: ColorManager.primary.withValues(alpha: 0.3),
             ),
             left: BorderSide(
               width: AppSize.s2,

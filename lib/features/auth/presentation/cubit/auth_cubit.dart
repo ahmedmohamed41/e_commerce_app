@@ -9,7 +9,7 @@ import 'package:injectable/injectable.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit({required this.registerUseCase, required this.loginUseCase})
     : super(AuthCubitInitial());
-  RegisterUseCase registerUseCase;
+  RegisterUseCase registerUseCase; 
   LoginUseCase loginUseCase;
 
   Future<void> register(RegisterRequest request) async {
