@@ -8,10 +8,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ProductRating extends StatelessWidget {
   final String productBuyers;
   final String productRating;
+  final void Function(int) increament;
+  final void Function(int) decreament;
+  final int productCounter;
   const ProductRating({
     super.key,
     required this.productBuyers,
     required this.productRating,
+    required this.increament,
+    required this.decreament,
+    required this.productCounter,
   });
 
   @override
@@ -48,7 +54,11 @@ class ProductRating extends StatelessWidget {
             ).copyWith(fontSize: 14.sp),
           ),
         ),
-        ProductCounter(add: (_) {}, remove: (_) {}, productCounter: 1),
+        ProductCounter(
+          add: increament,
+          remove: decreament,
+          productCounter: productCounter,
+        ),
       ],
     );
   }

@@ -1,30 +1,33 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/core/resources/color_manager.dart';
 import 'package:ecommerce_app/core/resources/styles_manager.dart';
 import 'package:ecommerce_app/core/routes_manager/routes.dart';
 import 'package:ecommerce_app/core/widget/heart_button.dart';
+import 'package:ecommerce_app/features/products_screen/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomProductWidget extends StatelessWidget {
   final double width;
   final double height;
-  final String image;
-  final String title;
-  final String description;
-  final double price;
-  final double discountPercentage;
-  final double rating;
+  // final String image;
+  // final String title;
+  // final String description;
+  // final double price;
+  // final double discountPercentage;
+  // final double rating;
 
   const CustomProductWidget({
     super.key,
     required this.width,
     required this.height,
-    required this.image,
-    required this.title,
-    required this.description,
-    required this.price,
-    required this.discountPercentage,
-    required this.rating,
+    required this.productEntity,
+    // required this.image,
+    // required this.title,
+    // required this.description,
+    // required this.price,
+    // required this.discountPercentage,
+    // required this.rating,
   });
 
   String truncateTitle(String title) {
@@ -45,10 +48,15 @@ class CustomProductWidget extends StatelessWidget {
     }
   }
 
+  final ProductEntity productEntity;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.pushNamed(context, Routes.productDetails),
+      onTap: () => Navigator.pushNamed(
+        context,
+        Routes.productDetails,
+        arguments: productEntity,
+      ),
       child: Container(
         width: width * 0.4,
         height: height * 0.3,
@@ -68,26 +76,26 @@ class CustomProductWidget extends StatelessWidget {
                 // alignment: AlignmentDirectional.center,
                 children: [
                   // Not working with the lastest flutter version
-
-                  // CachedNetworkImage(
-                  //   imageUrl: image,
-                  //   height: height * 0.15,
-                  //   width: double.infinity,
-                  //   fit: BoxFit.cover,
-                  //   placeholder: (context, url) =>
-                  //       const Center(child: CircularProgressIndicator()),
-                  //   errorWidget: (context, url, error) => const Icon(Icons.error),
-                  // ),
-                  // Image.network(
-                  //   image,
-                  //   fit: BoxFit.cover,
-                  // ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(14.r),
-                    ),
-                    child: Image.asset(image, fit: BoxFit.cover, width: width),
+                  CachedNetworkImage(
+                    imageUrl: productEntity.imageCover,
+                    height: height * 0.15,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) =>
+                        const Center(child: CircularProgressIndicator()),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
+                  // Image.network(
+                  //   productEntity.imageCover,
+                  //   fit: BoxFit.cover,
+                  // ),
+                  // ClipRRect(
+                  //   borderRadius: BorderRadius.vertical(
+                  //     top: Radius.circular(14.r),
+                  //   ),
+                  //   child: Image.asset(productEntity.imageCover, fit: BoxFit.cover, width: width),
+                  // ),
                   Positioned(
                     top: height * 0.01,
                     right: width * 0.02,
@@ -96,6 +104,7 @@ class CustomProductWidget extends StatelessWidget {
                 ],
               ),
             ),
+            SizedBox(height: 5),
             Expanded(
               flex: 5,
               child: Padding(
@@ -104,7 +113,8 @@ class CustomProductWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      truncateTitle(title),
+                      maxLines: 1,
+                      truncateTitle(productEntity.title),
                       style: getMediumStyle(
                         color: ColorManager.textColor,
                         fontSize: 14.sp,
@@ -112,7 +122,8 @@ class CustomProductWidget extends StatelessWidget {
                     ),
                     SizedBox(height: height * 0.002),
                     Text(
-                      truncateDescription(description),
+                      maxLines: 1,
+                      truncateDescription(productEntity.description),
                       style: getRegularStyle(
                         color: ColorManager.textColor,
                         fontSize: 14.sp,
@@ -120,25 +131,28 @@ class CustomProductWidget extends StatelessWidget {
                     ),
                     SizedBox(height: height * 0.01),
                     SizedBox(
-                      width: width * 0.3,
+                      width: width * 0.33,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "EGP $price",
+                            "EGP ${productEntity.priceAfterDiscount ?? productEntity.price}",
                             style: getRegularStyle(
                               color: ColorManager.textColor,
                               fontSize: 14.sp,
                             ),
                           ),
-                          Text(
-                            "$discountPercentage %",
-                            style: getTextWithLine(),
+                          Visibility(
+                            visible: productEntity.priceAfterDiscount != null,
+                            child: Text(
+                              "${productEntity.price}%",
+                              style: getTextWithLine(),
+                            ),
                           ),
                         ],
                       ),
                     ),
-                    // SizedBox(height: height * 0.005),
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -148,7 +162,7 @@ class CustomProductWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Review ($rating)",
+                                "Review (${productEntity.ratingsAverage})",
                                 style: getRegularStyle(
                                   color: ColorManager.textColor,
                                   fontSize: 12.sp,

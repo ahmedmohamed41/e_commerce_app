@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/features/main_layout/home/data/models/brand_response/brand.dart';
-import 'package:ecommerce_app/features/main_layout/home/data/models/brand_response/metadata.dart';
+import 'package:ecommerce_app/features/main_layout/home/data/models/category_response/metadata.dart';
 
 class BrandResponse {
   final int results;

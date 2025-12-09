@@ -51,6 +51,18 @@ import 'package:ecommerce_app/features/main_layout/home/presentation/cubit/brand
     as _i845;
 import 'package:ecommerce_app/features/main_layout/home/presentation/cubit/category_cubit.dart'
     as _i456;
+import 'package:ecommerce_app/features/products_screen/data/data_sources/product_api_remote_data_source.dart'
+    as _i965;
+import 'package:ecommerce_app/features/products_screen/data/data_sources/product_remote_data_source.dart'
+    as _i888;
+import 'package:ecommerce_app/features/products_screen/data/repositories_impl/product_reositories_impl.dart'
+    as _i21;
+import 'package:ecommerce_app/features/products_screen/domain/repositories/product_repositories.dart'
+    as _i289;
+import 'package:ecommerce_app/features/products_screen/domain/use_cases/get_product_use_case.dart'
+    as _i82;
+import 'package:ecommerce_app/features/products_screen/presentation/cubit/product_cubit.dart'
+    as _i463;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
@@ -78,6 +90,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i708.CategoryRemoteDataSource>(
       () => _i648.CategoryApiRemoteDataSource(),
     );
+    gh.lazySingleton<_i888.ProductRemoteDataSource>(
+      () => _i965.ProductApiRemoteDataSource(),
+    );
+    gh.lazySingleton<_i289.ProductRepositories>(
+      () => _i21.ProductReositoriesImpl(
+        productApiRemoteDataSource: gh<_i888.ProductRemoteDataSource>(),
+      ),
+    );
     gh.lazySingleton<_i578.CategoryRepositories>(
       () => _i7.CategoryRepositoriesImpl(
         categoryApiRemoteDataSource: gh<_i708.CategoryRemoteDataSource>(),
@@ -94,6 +114,11 @@ extension GetItInjectableX on _i174.GetIt {
         authLocalDataSource: gh<_i1050.AuthLocalDataSource>(),
       ),
     );
+    gh.lazySingleton<_i82.GetProductUseCase>(
+      () => _i82.GetProductUseCase(
+        productRepositories: gh<_i289.ProductRepositories>(),
+      ),
+    );
     gh.singleton<_i1044.LoginUseCase>(
       () => _i1044.LoginUseCase(authRepository: gh<_i804.AuthRepository>()),
     );
@@ -105,18 +130,21 @@ extension GetItInjectableX on _i174.GetIt {
         categoryRepositories: gh<_i578.CategoryRepositories>(),
       ),
     );
+    gh.factory<_i463.ProductCubit>(
+      () => _i463.ProductCubit(productUseCase: gh<_i82.GetProductUseCase>()),
+    );
     gh.singleton<_i118.AuthCubit>(
       () => _i118.AuthCubit(
         registerUseCase: gh<_i552.RegisterUseCase>(),
         loginUseCase: gh<_i1044.LoginUseCase>(),
       ),
     );
-    gh.lazySingleton<_i456.CategoryCubit>(
+    gh.factory<_i456.CategoryCubit>(
       () => _i456.CategoryCubit(
         getCategoryUseCase: gh<_i744.GetCategoryUseCase>(),
       ),
     );
-    gh.lazySingleton<_i845.BrandCubit>(
+    gh.factory<_i845.BrandCubit>(
       () => _i845.BrandCubit(getBrandUseCase: gh<_i828.GetBrandUseCase>()),
     );
     return this;
